@@ -36,3 +36,23 @@
       dest: /home/tim/.bashrc
       owner: tim
       group: tim
+
+  - name: add ansible user
+    user:
+      name: labrador
+      system: yes
+
+  - name: set up sudo for anisble user
+    copy:
+      src: files/sudoer_labrador
+      dest: /etc/sudoer.d/labrador
+      owner: root
+      group: root
+      mode: 0440
+ 
+  -  name: add ansible-pull cron job
+     cron:
+       name: ansible auto-provision
+       user: labrador
+       minute: "*/10"
+       job: ansible-pull -o -U https://github.com/Timmieboy2004/Ansible_pull.git
