@@ -42,7 +42,7 @@
       name: labrador
       system: yes
 
-  - name: set up sudo for anisble user
+  - name: set up sudo for ansisble user
     copy:
       src: files/sudoer_labrador
       dest: /etc/sudoer.d/labrador
